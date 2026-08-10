@@ -11,10 +11,12 @@ public class GeneralEnemyController : MonoBehaviour
     {
         healthBar = healthBarContainer.GetComponent<HealthbarController>();
         healthBar.setMaxHealth(maxHealth);
+        healthBar.DoDamage(10);
     }
 
     private void Update()
     {
+
         if (healthBar.GetMaxHealth() == healthBar.GetCurrentHealth())
         { 
             healthBar.showHealthbar(false);
@@ -25,5 +27,10 @@ public class GeneralEnemyController : MonoBehaviour
             healthBar.showHealthbar(true);
         }
             
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Au");
     }
 }

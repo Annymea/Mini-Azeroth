@@ -14,7 +14,6 @@ public class CombatController : MonoBehaviour
     private void Awake()
     {
         actions = new InputSystem_Actions();
-        //cam = Camera.main;
     }
 
     private void OnEnable()
@@ -36,7 +35,7 @@ public class CombatController : MonoBehaviour
 
         Vector2 worldPos = actions.Combat.Aim.ReadValue<Vector2>();
         
-        mousePos = cam.ScreenToWorldPoint(new Vector3(worldPos.x, worldPos.y));//, cam.nearClipPlane));
+        mousePos = cam.ScreenToWorldPoint(new Vector3(worldPos.x, worldPos.y));
         
     }
 

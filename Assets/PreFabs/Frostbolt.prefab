@@ -213,3 +213,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   body: {fileID: 7383503976925957140}
   velocity: 5
+  range: 10
