@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7383503976925957140}
   - component: {fileID: 1156389508724413688}
   - component: {fileID: 1345719668538565353}
+  - component: {fileID: 728486658207731975}
   m_Layer: 0
   m_Name: Frostbolt
   m_TagString: Untagged
@@ -214,3 +215,17 @@ MonoBehaviour:
   body: {fileID: 7383503976925957140}
   velocity: 5
   range: 10
+  destroyOnHit: 1
+--- !u!114 &728486658207731975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810130610638271623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8fdc54eee158845aa93870f6388731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  damage: 20

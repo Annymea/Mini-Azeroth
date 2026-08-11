@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class GeneralEnemyController : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private float maxHealth = 100;
     [SerializeField] private GameObject healthBarContainer;
+    [SerializeField] private GameObject deadBody;
 
     private HealthbarController healthBar;
 
@@ -11,7 +12,6 @@ public class GeneralEnemyController : MonoBehaviour
     {
         healthBar = healthBarContainer.GetComponent<HealthbarController>();
         healthBar.setMaxHealth(maxHealth);
-        healthBar.DoDamage(10);
     }
 
     private void Update()
@@ -31,6 +31,17 @@ public class GeneralEnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Au");
+        GameObject attack = collision.gameObject;
+        AttackController attackController = attack.GetComponent<AttackController>();
+        if (attackController == null)
+            return;
+
+        healthBar.DoDamage(attackController.GetDamage());
+
+        if (!healthBar.IsAlive())
+        {
+            Instantiate(deadBody, new Vector3(transform.position.x, transform.position.y), transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }

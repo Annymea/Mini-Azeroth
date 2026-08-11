@@ -5,13 +5,13 @@ public class HealthbarController : MonoBehaviour
     [SerializeField] private GameObject healthBar;
     [SerializeField] private GameObject background;
 
-    private int maxHealth = 100; 
-    private int currentHealth = 100;
+    private float maxHealth = 100; 
+    private float currentHealth = 100;
     private float healthPercentage;
 
     private void Update()
     {
-        healthPercentage = (float)currentHealth / (float)maxHealth; 
+        healthPercentage = currentHealth / maxHealth; 
     }
 
     private void FixedUpdate()
@@ -19,34 +19,34 @@ public class HealthbarController : MonoBehaviour
         healthBar.transform.localScale = new Vector3(healthPercentage, 1, 1);
     }
 
-    public void setMaxHealth(int maxHealth)
+    public void setMaxHealth(float maxHealth)
     {
-        int maxHealthDiff = this.maxHealth - maxHealth;
+        float maxHealthDiff = this.maxHealth - maxHealth;
 
         this.maxHealth = maxHealth;
         currentHealth -= maxHealthDiff;
     }
 
-    public void DoDamage(int damage)
+    public void DoDamage(float damage)
     {
         currentHealth -= damage;
         if(currentHealth < 0)
             currentHealth = 0;
     }
 
-    public void Heal(int heal)
+    public void Heal(float heal)
     {
         currentHealth += heal;
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
     }
 
-    public int GetMaxHealth()
+    public float GetMaxHealth()
     {
         return maxHealth;
     }
 
-    public int GetCurrentHealth()
+    public float GetCurrentHealth()
     {
         return currentHealth;
     }
