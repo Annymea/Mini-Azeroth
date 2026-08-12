@@ -25,12 +25,9 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        bool isPlayer = collision.gameObject.GetComponents<PlayerController>() != null; 
-        bool isOtherProjectile = collision.gameObject.GetComponents<ProjectileController>() != null;
-        Debug.Log(isPlayer + " ... " + isOtherProjectile );
-        Debug.Log(destroyOnHit && (!isPlayer || !isOtherProjectile));
+        
 
-        if (isPlayer || isOtherProjectile)
+        if (IsHittable(collision) == false)
             return;
 
         if (destroyOnHit)
@@ -38,5 +35,13 @@ public class ProjectileController : MonoBehaviour
             Destroy(gameObject);
         }
             
+    }
+
+    private bool IsHittable(Collider2D collision)
+    {
+        bool isPlayer = collision.gameObject.GetComponentInChildren<PlayerController>() != null;
+        bool isOtherProjectile = collision.gameObject.GetComponentInChildren<ProjectileController>() != null;
+
+        return !(isPlayer || isOtherProjectile);
     }
 }
