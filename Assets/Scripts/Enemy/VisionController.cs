@@ -3,20 +3,20 @@ using UnityEngine.Events;
 
 public class VisionController : MonoBehaviour
 {
-    public UnityEvent<Vector2> onSight;
+    public UnityEvent<Transform> onSight;
     public UnityEvent outOfSight;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponentInChildren<PlayerController>() == null)
+        if (collision.tag != "Player")
             return;
 
-        onSight.Invoke(collision.gameObject.transform.position);
+        onSight.Invoke(collision.gameObject.transform);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponentInChildren<PlayerController>() == null)
+        if (collision.tag != "Player")
             return;
 
         outOfSight.Invoke();

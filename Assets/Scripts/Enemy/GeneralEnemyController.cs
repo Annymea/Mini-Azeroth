@@ -21,8 +21,8 @@ public class GeneralEnemyController : MonoBehaviour
 
     private void Update()
     {
-
-        if (healthBar.GetMaxHealth() == healthBar.GetCurrentHealth())
+        ///healthBar.showHealthbar(true);
+        /*if (healthBar.GetMaxHealth() == healthBar.GetCurrentHealth())
         { 
             healthBar.showHealthbar(false);
             
@@ -30,7 +30,7 @@ public class GeneralEnemyController : MonoBehaviour
         else
         {
             healthBar.showHealthbar(true);
-        }
+        }*/
 
         Vector2 movement = body.linearVelocity;
         bool isRunning = movement.x != 0 || movement.y != 0;
@@ -75,7 +75,7 @@ public class GeneralEnemyController : MonoBehaviour
         if (attackController == null)
             return;
 
-        healthBar.DoDamage(attackController.GetDamage());
+        healthBar.GetDamage(attackController.DoDamage());
 
         if (!healthBar.IsAlive())
         {

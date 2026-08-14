@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 1156389508724413688}
   - component: {fileID: 1345719668538565353}
   - component: {fileID: 728486658207731975}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Frostbolt
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
