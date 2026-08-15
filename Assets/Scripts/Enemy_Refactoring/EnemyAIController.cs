@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyAIController : MonoBehaviour
 {
     private enum movingStates
     {
-        moveToPlayer, moveToSpawn, dontMove
+        moveToPlayer, moveToSpawn, dontMove, dead
     };
 
     [Header("Stats")]
@@ -15,6 +16,7 @@ public class EnemyAIController : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D body;
+
 
     private movingStates moveState = movingStates.dontMove;
     private Transform player = null;
@@ -28,6 +30,9 @@ public class EnemyAIController : MonoBehaviour
     private void FixedUpdate()
     {
         switch (moveState){
+            case movingStates.dead:
+                body.linearVelocity = Vector3.zero;
+                break;
             case movingStates.dontMove:
                 body.linearVelocity = Vector3.zero;
                 break;
@@ -44,18 +49,24 @@ public class EnemyAIController : MonoBehaviour
 
     public void OnEnemySight(Transform player)
     {
+        if (moveState == movingStates.dead)
+            return;
+
         this.player = player;
         moveState = movingStates.moveToPlayer;
     }
 
     public void OnEnemyOutOfSight()
     {
+        if (moveState == movingStates.dead)
+            return;
+
         moveState = movingStates.moveToSpawn;
     }
 
     public void OnDeath()
     {
-        moveState = movingStates.dontMove;
+        moveState = movingStates.dead;
     }
 
     public void MoveTo(Vector2 to, float tolarance)
