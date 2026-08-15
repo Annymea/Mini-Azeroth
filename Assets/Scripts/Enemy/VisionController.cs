@@ -6,7 +6,7 @@ public class VisionController : MonoBehaviour
     public UnityEvent<Transform> onSight;
     public UnityEvent outOfSight;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag != "Player")
             return;

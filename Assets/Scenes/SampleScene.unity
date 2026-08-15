@@ -657,10 +657,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
       propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
       propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
+      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
@@ -668,7 +672,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 454644442}
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
+      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 454644445}
+    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
       propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
+      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
@@ -676,11 +688,23 @@ PrefabInstance:
       value: OnDeath
       objectReference: {fileID: 0}
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
+      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
       propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EnemyController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
+      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: EnemyAIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
       propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
+      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5935810301766316748, guid: d280c1c858a376841ad4de21602213aa, type: 3}
@@ -770,8 +794,8 @@ Transform:
   m_Children:
   - {fileID: 417968257}
   - {fileID: 1925986490}
-  - {fileID: 670364024}
   - {fileID: 1966684358}
+  - {fileID: 553750136}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &454644441
@@ -845,7 +869,7 @@ MonoBehaviour:
   healthBar: {fileID: 1093961665}
   enemySprite: {fileID: 1925986489}
   deadBody: {fileID: 21624687}
-  enemyVision: {fileID: 670364023}
+  enemyVision: {fileID: 553750135}
 --- !u!114 &454644443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1482,6 +1506,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4858cf3f17f58124d81ec8632b126c09, type: 3}
+--- !u!1 &553750135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 553750136}
+  m_Layer: 0
+  m_Name: Enemy_Vision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &553750136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553750135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 670364024}
+  - {fileID: 1479197544}
+  m_Father: {fileID: 454644440}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &568517847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1768,8 +1825,8 @@ GameObject:
   - component: {fileID: 670364024}
   - component: {fileID: 670364025}
   - component: {fileID: 670364026}
-  m_Layer: 0
-  m_Name: Enemy_Vision
+  m_Layer: 6
+  m_Name: Enemy_Vision_StartChase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,11 +1841,11 @@ Transform:
   m_GameObject: {fileID: 670364023}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.336, y: -1.341, z: 0}
+  m_LocalPosition: {x: 1.336, y: -1.3410001, z: 0}
   m_LocalScale: {x: 5.78, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 454644440}
+  m_Father: {fileID: 553750136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &670364025
 CircleCollider2D:
@@ -1816,10 +1873,10 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
@@ -33497,6 +33554,105 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3952197520072883962, guid: c62ed84c4076a714e9c3fcf727ff7aa4, type: 3}
   m_PrefabInstance: {fileID: 501129504}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1479197543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1479197544}
+  - component: {fileID: 1479197546}
+  - component: {fileID: 1479197545}
+  m_Layer: 6
+  m_Name: Enemy_Vision_StopChase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1479197544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479197543}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.348, y: -1.349, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 553750136}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1479197545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479197543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 193805b96315dd6418344d59bd34e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VisionController
+  onSight:
+    m_PersistentCalls:
+      m_Calls: []
+  outOfSight:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 454644445}
+        m_TargetAssemblyTypeName: EnemyAIController, Assembly-CSharp
+        m_MethodName: OnEnemyOutOfSight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!58 &1479197546
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479197543}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 10
 --- !u!4 &1488984775 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7409469246616576272, guid: 161209800fe3f7f40b47fc9265269e1e, type: 3}

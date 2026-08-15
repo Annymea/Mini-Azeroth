@@ -1,8 +1,12 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyAIController : MonoBehaviour
 {
+    private enum movingStates
+    {
+        moveToPlayer, moveToSpawn, dontMove
+    };
+
     [Header("Stats")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float attackRange;
@@ -12,22 +16,46 @@ public class EnemyAIController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D body;
 
-    private bool moveToPlayer = false;
+    private movingStates moveState = movingStates.dontMove;
     private Transform player = null;
+    private Vector2 spawnPos; //last position before running to player
+
+    private void Awake()
+    {
+        spawnPos = transform.position;
+    }
 
     private void FixedUpdate()
     {
-        if (moveToPlayer)
-        {
-            MoveTo(player.position, attackRange);
+        switch (moveState){
+            case movingStates.dontMove:
+                body.linearVelocity = Vector3.zero;
+                break;
+            case movingStates.moveToPlayer:
+                MoveTo(player.position, attackRange);
+                break;
+            case movingStates.moveToSpawn:
+                MoveTo(spawnPos, stoppingDistance);
+                break;
+            default:
+                break;
         }
-        //Later: if not in sight anymore move to spawnerPos
     }
 
     public void OnEnemySight(Transform player)
     {
-        moveToPlayer = true;
         this.player = player;
+        moveState = movingStates.moveToPlayer;
+    }
+
+    public void OnEnemyOutOfSight()
+    {
+        moveState = movingStates.moveToSpawn;
+    }
+
+    public void OnDeath()
+    {
+        moveState = movingStates.dontMove;
     }
 
     public void MoveTo(Vector2 to, float tolarance)
