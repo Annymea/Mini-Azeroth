@@ -74,7 +74,8 @@ public class EnemyAIController : MonoBehaviour
         Vector2 from = body.position;
         Vector2 direction = to - from;
 
-        if ((from - to).magnitude < tolarance)
+        Debug.Log(Vector2.Distance(from, to));
+        if (Vector2.Distance(from, to) < tolarance)
         {
             body.linearVelocity = Vector2.zero;
             return;

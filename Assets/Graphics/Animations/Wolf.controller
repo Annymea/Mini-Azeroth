@@ -91,7 +91,7 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: VelocityX
     m_EventTreshold: 0.1
-  - m_ConditionMode: 3
+  - m_ConditionMode: 4
     m_ConditionEvent: VelocityY
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
