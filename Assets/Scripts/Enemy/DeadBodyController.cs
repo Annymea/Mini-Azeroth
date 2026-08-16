@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class DaedBodyController : MonoBehaviour
+public class DeadBodyController : MonoBehaviour
 {
     [SerializeField] private float despawnTime;
 
+    [Header("Events")]
+    public UnityEvent despawn;
     private float timeAlive = 0;
+
+  
 
     private void Update()
     {
@@ -15,7 +20,7 @@ public class DaedBodyController : MonoBehaviour
     {
         if(timeAlive >= despawnTime)
         {
-            Destroy(gameObject);
+            despawn.Invoke();
         }
     }
 }

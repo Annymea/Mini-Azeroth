@@ -53,7 +53,14 @@ public class CombatController : MonoBehaviour
         Vector2 direction = mousePos - aimer.position;
         aimer.up = direction;
         GameObject newSpell = Instantiate(frostbolt, new Vector3(aimer.position.x, aimer.position.y), aimer.rotation);
-        newSpell.GetComponent<ProjectileController>().Shoot(direction);
+        ProjectileController newSpellController = newSpell.GetComponent<ProjectileController>();
+
+        if (newSpellController == null) return;
+
+        newSpellController.Shoot(direction);
+        Transform player = gameObject.transform.parent;
+
+        newSpellController.SetPlayerPos(player);
       
     }
 }

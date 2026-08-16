@@ -9,6 +9,8 @@ public class EnemyDefenseController : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent<float> getDamage;
+    public UnityEvent<Transform> getDamageFrom;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,8 +18,13 @@ public class EnemyDefenseController : MonoBehaviour
 
         AttackController attack = collision.GetComponent<AttackController>();
         if (attack == null) return;
+        ProjectileController projectile = attack.GetComponent<ProjectileController>();
+        if(projectile == null) return;
 
         float damage = Mathf.Max(attack.DoDamage() - defense, 0);
         getDamage.Invoke(damage);
+
+        Transform playerPos = projectile.GetPlayerPos();
+        getDamageFrom.Invoke(playerPos);
     }
 }

@@ -33,17 +33,15 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         movement = actions.Movement.Move.ReadValue<Vector2>();
-
-        
-        
     }
 
     private void FixedUpdate()
     {
         spriteRenderer.flipX = movement.x < 0;
-
         animator.SetBool("IsRunning",(movement.x != 0 || movement.y != 0));
         rigidBody.linearVelocity = movement * movementSpeed;
         cam.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -100);
     }
+
+    
 }

@@ -8,6 +8,17 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private bool destroyOnHit;
 
     private float travelTime = 0f;
+    private Transform playerPos;
+
+    public void SetPlayerPos(Transform player)
+    {
+        playerPos = player;
+    }
+
+    public Transform GetPlayerPos()
+    {
+        return playerPos;
+    }
 
     public void Shoot(Vector2 direction)
     {

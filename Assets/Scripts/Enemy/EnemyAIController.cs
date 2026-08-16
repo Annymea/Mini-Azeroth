@@ -20,7 +20,7 @@ public class EnemyAIController : MonoBehaviour
 
     private movingStates moveState = movingStates.dontMove;
     private Transform player = null;
-    private Vector2 spawnPos; //last position before running to player
+    private Vector2 spawnPos;
 
     private void Awake()
     {
@@ -64,6 +64,15 @@ public class EnemyAIController : MonoBehaviour
         moveState = movingStates.moveToSpawn;
     }
 
+    public void OnGetAttacked(Transform player)
+    {
+        if (moveState == movingStates.dead)
+            return;
+
+        this.player = player;
+        moveState = movingStates.moveToPlayer;
+    }
+
     public void OnDeath()
     {
         moveState = movingStates.dead;
@@ -74,7 +83,6 @@ public class EnemyAIController : MonoBehaviour
         Vector2 from = body.position;
         Vector2 direction = to - from;
 
-        Debug.Log(Vector2.Distance(from, to));
         if (Vector2.Distance(from, to) < tolarance)
         {
             body.linearVelocity = Vector2.zero;
