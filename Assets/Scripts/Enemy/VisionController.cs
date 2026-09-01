@@ -3,15 +3,17 @@ using UnityEngine.Events;
 
 public class VisionController : MonoBehaviour
 {
-    public UnityEvent<Transform> onSight;
-    public UnityEvent outOfSight;
+    [Header("Events")]
+    public UnityEvent<Transform> foundPlayer;
+    public UnityEvent lostPlayer;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag != "Player")
             return;
 
-        onSight.Invoke(collision.gameObject.transform);
+        foundPlayer.Invoke(collision.gameObject.transform);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -19,6 +21,6 @@ public class VisionController : MonoBehaviour
         if (collision.tag != "Player")
             return;
 
-        outOfSight.Invoke();
+        lostPlayer.Invoke();
     }
 }

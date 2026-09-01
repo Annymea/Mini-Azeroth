@@ -81,15 +81,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193805b96315dd6418344d59bd34e74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VisionController
-  onSight:
+  foundPlayer:
     m_PersistentCalls:
       m_Calls: []
-  outOfSight:
+  lostPlayer:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3400888603458114792}
-        m_TargetAssemblyTypeName: EnemyAIController, Assembly-CSharp
-        m_MethodName: OnEnemyOutOfSight
+      - m_Target: {fileID: 9120364907363902374}
+        m_TargetAssemblyTypeName: EnemyStatusController, Assembly-CSharp
+        m_MethodName: OnLostPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -180,36 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5732eb96ac804a242a817913cba38491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  canAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3400888603458114792}
-        m_TargetAssemblyTypeName: EnemyAIController, Assembly-CSharp
-        m_MethodName: OnEnterAttackRange
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  stopAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3400888603458114792}
-        m_TargetAssemblyTypeName: EnemyAIController, Assembly-CSharp
-        m_MethodName: OnExitAttackRange
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &2735152458463597564
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,12 +261,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193805b96315dd6418344d59bd34e74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VisionController
-  onSight:
+  foundPlayer:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3400888603458114792}
-        m_TargetAssemblyTypeName: EnemyAIController, Assembly-CSharp
-        m_MethodName: OnEnemySight
+      - m_Target: {fileID: 9120364907363902374}
+        m_TargetAssemblyTypeName: EnemyStatusController, Assembly-CSharp
+        m_MethodName: OnStartChase
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -306,7 +276,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  outOfSight:
+  lostPlayer:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &3661517510161042886
@@ -323,8 +293,9 @@ GameObject:
   - component: {fileID: 191387244318048004}
   - component: {fileID: 4282148968139058312}
   - component: {fileID: 4948401049841148167}
-  - component: {fileID: 3400888603458114792}
   - component: {fileID: 3442198519209673270}
+  - component: {fileID: 572299922289948368}
+  - component: {fileID: 9120364907363902374}
   m_Layer: 0
   m_Name: Enemy_Wolf
   m_TagString: Untagged
@@ -451,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   attackDamage: 10
+  cooldown: 2
 --- !u!114 &4282148968139058312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,9 +454,9 @@ MonoBehaviour:
   getDamageFrom:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3400888603458114792}
-        m_TargetAssemblyTypeName: EnemyAIController, Assembly-CSharp
-        m_MethodName: OnGetAttacked
+      - m_Target: {fileID: 9120364907363902374}
+        m_TargetAssemblyTypeName: EnemyStatusController, Assembly-CSharp
+        m_MethodName: OnStartChase
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -511,22 +483,6 @@ MonoBehaviour:
   deadBody: {fileID: 973490193696922135}
   enemyVision: {fileID: 8509521754937650815}
   enemyCollider: {fileID: 827248660190936402}
---- !u!114 &3400888603458114792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3661517510161042886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cdd96bf0b634f7458332f053277f52f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  moveSpeed: 2
-  stoppingDistance: 0.5
-  attackDelay: 0.3
-  body: {fileID: 274184952060545257}
 --- !u!114 &3442198519209673270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,6 +498,36 @@ MonoBehaviour:
   animator: {fileID: 3048237288330517008}
   body: {fileID: 274184952060545257}
   spriteRenderer: {fileID: 2400689852873187051}
+--- !u!114 &572299922289948368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3661517510161042886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f31c37d3c8bfee847bc366fc28093386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  body: {fileID: 274184952060545257}
+  movingTolerance: 0.5
+  moveSpeed: 2
+--- !u!114 &9120364907363902374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3661517510161042886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 945f70c1af62aa74f80e0f07047c2db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStatusController
+  combat: {fileID: 191387244318048004}
+  move: {fileID: 572299922289948368}
+  attackRange: {fileID: 5414777261566265107}
 --- !u!1 &6179896151653183347
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,6 +853,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 431207149757873680, guid: 5794d10ac7676c1499a64ca568289b6e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5985405733826380343, guid: 5794d10ac7676c1499a64ca568289b6e, type: 3}
       propertyPath: despawn.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -901,7 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8652048894182941226, guid: 5794d10ac7676c1499a64ca568289b6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.65
       objectReference: {fileID: 0}
     - target: {fileID: 8652048894182941226, guid: 5794d10ac7676c1499a64ca568289b6e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1047,7 +1037,7 @@ PrefabInstance:
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
       propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 3400888603458114792}
+      objectReference: {fileID: 9120364907363902374}
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
       propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1070,7 +1060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
       propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: EnemyAIController, Assembly-CSharp
+      value: EnemyStatusController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
       propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
