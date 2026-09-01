@@ -60,9 +60,11 @@ public class EnemyStatusController : MonoBehaviour
         switch (state)
         {
             case EnemyState.idle:
+                combat.Stop();
                 move.Stop();
                 break;
             case EnemyState.chasePlayer:
+                combat.Stop();
                 move.MoveTo(player.position);
                 break;
             case EnemyState.attack:
@@ -70,9 +72,11 @@ public class EnemyStatusController : MonoBehaviour
                 combat.TryAttack(player);
                 break;
             case EnemyState.moveToSpawn:
+                combat.Stop();
                 move.MoveTo(spawnPos);
                 break;
             default:
+                combat.Stop();
                 move.Stop();
                 break;
         }

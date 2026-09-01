@@ -422,7 +422,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   attackDamage: 10
-  cooldown: 2
+  cooldown: 5
+  prepare: 0.5
+  attack: {fileID: 6439357787309777253}
+  animate: {fileID: 3442198519209673270}
 --- !u!114 &4282148968139058312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,9 +498,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5476a3fa16426b347956791662b85db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  movingTolerance: 0.02
+  attackMoveSpeed: 5
+  attackStopDistance: 1
   animator: {fileID: 3048237288330517008}
   body: {fileID: 274184952060545257}
   spriteRenderer: {fileID: 2400689852873187051}
+  attackBegan:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 191387244318048004}
+        m_TargetAssemblyTypeName: EnemyCombatController, Assembly-CSharp
+        m_MethodName: OnAttackBegan
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  attackFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 191387244318048004}
+        m_TargetAssemblyTypeName: EnemyCombatController, Assembly-CSharp
+        m_MethodName: OnAttackFinished
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &572299922289948368
 MonoBehaviour:
   m_ObjectHideFlags: 0
