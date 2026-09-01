@@ -14,13 +14,12 @@ public class DeadBodyController : MonoBehaviour
     private void Update()
     {
         timeAlive += Time.deltaTime;
-    }
 
-    private void FixedUpdate()
-    {
-        if(timeAlive >= despawnTime)
+        if (timeAlive >= despawnTime)
         {
             despawn.Invoke();
         }
     }
+
+   
 }

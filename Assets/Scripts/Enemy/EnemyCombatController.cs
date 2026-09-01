@@ -6,4 +6,5 @@ public class EnemyCombatController : MonoBehaviour
     [SerializeField] private float attackDamage;
 
     
+    
 }

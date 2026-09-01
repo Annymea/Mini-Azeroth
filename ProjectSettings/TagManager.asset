@@ -45,5 +45,8 @@ TagManager:
   - name: Perspective
     uniqueID: 1356827593
     locked: 0
+  - name: UI
+    uniqueID: 309679729
+    locked: 0
   m_RenderingLayers:
   - Default

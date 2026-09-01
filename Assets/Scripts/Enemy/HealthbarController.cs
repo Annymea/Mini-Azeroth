@@ -10,6 +10,7 @@ public class HealthbarController : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] private float maxHealth = 100;
+    [SerializeField] private bool alwaysShow = false;
 
 
     [Header("Events")]
@@ -18,6 +19,7 @@ public class HealthbarController : MonoBehaviour
 
     private float currentHealth;
     private float healthPercentage;
+     
 
     private void Awake()
     {
@@ -27,12 +29,13 @@ public class HealthbarController : MonoBehaviour
     private void Update()
     {
         healthPercentage = currentHealth / maxHealth;
-
+        
+        if(!alwaysShow)
+            hideHealthbar();
     }
 
     private void FixedUpdate()
     {
-        showHealthbar();
         healthBar.transform.localScale = new Vector3(healthPercentage, 1, 1);
     }
 
@@ -61,17 +64,17 @@ public class HealthbarController : MonoBehaviour
         return currentHealth > 0;
     }
 
-    private void showHealthbar()
+    private void hideHealthbar()
     {
-        if(currentHealth != maxHealth)
-        {
-            healthBar.SetActive(true);
-            background.SetActive(true);
-        }
-        else
+        if(currentHealth == maxHealth)
         {
             healthBar.SetActive(false);
             background.SetActive(false);
+        }
+        else
+        {
+            healthBar.SetActive(true);
+            background.SetActive(true);
         }
         
     }
