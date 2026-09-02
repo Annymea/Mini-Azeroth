@@ -31,9 +31,11 @@ public class EnemyCombatController : MonoBehaviour
     private Transform player;
     private Vector2 attackPosition;
     private Vector2 enemyPosition;
+    private bool started = false;
 
     private void Update()
     {
+        //Debug.Log(state);
         switch (state)
         {
             case CombatState.idle:
@@ -43,15 +45,21 @@ public class EnemyCombatController : MonoBehaviour
 
                 if (prepareTimer >= prepare)
                 {
+                    prepareTimer = 0;
                     state = CombatState.beginAttack;
                     isAttacking = true;
                 }
                 break;
 
             case CombatState.beginAttack:
-                enemyPosition = transform.position;
-                attackPosition = player.position;
-                animate.BeginAttackPlayer(attackPosition);
+                if (!started)
+                {
+                    Debug.Log(attackPosition);
+                    enemyPosition = transform.position;
+                    attackPosition = player.position;
+                    animate.BeginAttackPlayer(attackPosition);
+                    started = true;
+                }
                 break;
 
             case CombatState.attack:
@@ -62,16 +70,17 @@ public class EnemyCombatController : MonoBehaviour
 
             case CombatState.finishAttack:
                 attack.SetActive(false);
-                Debug.Log("boom");
                 animate.EndAttackPlayer(enemyPosition);
                 break;
 
             case CombatState.cooldown:
                 cooldownTimer += Time.deltaTime;
+                //Debug.Log($"Cooldown: {cooldownTimer}");
 
-                if (cooldownTimer >= prepare)
+                if (cooldownTimer >= cooldown)
                 {
-                    state = CombatState.beginAttack;
+                    cooldownTimer = 0;
+                    state = CombatState.prepare;
                 }
                 break;
         }
@@ -80,6 +89,7 @@ public class EnemyCombatController : MonoBehaviour
     public void OnAttackBegan()
     {
         state = CombatState.attack;
+        started = false;
     }
 
     public void OnAttackFinished()

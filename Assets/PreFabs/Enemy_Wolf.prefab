@@ -504,6 +504,7 @@ MonoBehaviour:
   animator: {fileID: 3048237288330517008}
   body: {fileID: 274184952060545257}
   spriteRenderer: {fileID: 2400689852873187051}
+  enemySprite: {fileID: 6902460953274636723}
   attackBegan:
     m_PersistentCalls:
       m_Calls:
@@ -752,7 +753,7 @@ Transform:
   m_GameObject: {fileID: 6902460953274636723}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.07, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
