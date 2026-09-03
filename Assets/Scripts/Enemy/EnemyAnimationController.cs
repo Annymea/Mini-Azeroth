@@ -43,47 +43,29 @@ public class EnemyAnimationController : MonoBehaviour
         switch (state) 
         {
             case CombatState.beginAttack:
-                /*
-                if(attackTime == 0)
-                {
-                    transform.position = new Vector2( playerPosition.x, playerPosition.y);
-                    Debug.Log("EnemySpritePos " + transform.position);
-                }
-                attackTime += Time.deltaTime;
-                if(attackTime >= attackTimer)
-                {
-                    attackBegan.Invoke();
-                    state = CombatState.idle;
-                    attackTime = 0;
-                }
-                */
-
-                if (MoveSpriteTo(playerPosition))
+                if (MoveSpriteTo(playerPosition, attackStopDistance))
                 {
                     attackBegan.Invoke();
                     state = CombatState.idle;
                 }
                 break;
             case CombatState.finishAttack:
-
-                transform.position = enemyPosition;
-                //if (MoveSpriteTo(position))
-                //{
-                //    Debug.Log("FinishAnimation fertig");
+                if (MoveSpriteTo(enemyPosition, 0))
+                {
                     attackFinished.Invoke();
                     state = CombatState.idle;
-                //}
+                }
                 break; 
         }
     }
 
 
-    private bool MoveSpriteTo(Vector2 position)
+    private bool MoveSpriteTo(Vector2 position, float stopDistance)
     {
         Vector2 from = transform.position;
         Vector2 direction = position - from;
 
-        if (Vector2.Distance(from, position) < movingTolerance + attackStopDistance)
+        if (Vector2.Distance(from, position) < movingTolerance + stopDistance)
         {
             return true;
         }
@@ -93,39 +75,22 @@ public class EnemyAnimationController : MonoBehaviour
 
         return false;
     }
-
-    /*
-    private bool MoveToPlayer(Vector2 playerPos)
-    {
-        Vector2 wolfPos = spriteRenderer.transform.position;
-        Vector2 direction = (playerPos - wolfPos).normalized;
-
-        if (Vector2.Distance(wolfPos, position) < attackStopDistance )
-        {
-            spriteRenderer.transform.position = position;
-            return true;
-        }
-
-        spriteRenderer.transform.position += 
-            direction.normalized * attackMoveSpeed * Time.deltaTime;
-
-        return false; 
-    }
-    */
     public void BeginAttackPlayer(Vector2 playerPos)
     {
         playerPosition = playerPos;
-        enemyPosition = transform.position;//new Vector2(transform.position.x, transform.position.y) ;
+        enemyPosition = transform.position;
 
-        //Debug.Log("BeginAnimation");
-        Debug.Log("in Event" + playerPos);
         state = CombatState.beginAttack;
     }
 
     public void EndAttackPlayer(Vector2 enemyPos) 
     {
-        //Debug.Log("FinishAnimation");
         state = CombatState.finishAttack;
+    }
+
+    public void StopCombatAnimation()
+    {
+        state = CombatState.idle;
     }
 
 }

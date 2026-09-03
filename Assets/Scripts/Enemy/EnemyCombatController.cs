@@ -14,9 +14,9 @@ public class EnemyCombatController : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] private float attackDamage;
+    [SerializeField] private float attackDuration;
     [SerializeField] private float cooldown;
     [SerializeField] private float prepare;
-    //[SerializeField] private float attackDuration = 0.2f; 
 
     [Header("Components")]
     [SerializeField] private GameObject attack;
@@ -27,6 +27,7 @@ public class EnemyCombatController : MonoBehaviour
     private bool isAttacking = false;
     private float cooldownTimer = 0;
     private float prepareTimer = 0;
+    private float attackDurationTimer = 0;
 
     private Transform player;
     private Vector2 attackPosition;
@@ -35,7 +36,6 @@ public class EnemyCombatController : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(state);
         switch (state)
         {
             case CombatState.idle:
@@ -54,7 +54,6 @@ public class EnemyCombatController : MonoBehaviour
             case CombatState.beginAttack:
                 if (!started)
                 {
-                    Debug.Log(attackPosition);
                     enemyPosition = transform.position;
                     attackPosition = player.position;
                     animate.BeginAttackPlayer(attackPosition);
@@ -63,19 +62,29 @@ public class EnemyCombatController : MonoBehaviour
                 break;
 
             case CombatState.attack:
-                attack.SetActive(true);
-                attack.transform.position = attackPosition;
-                state = CombatState.finishAttack;
+                if (attackDurationTimer == 0)
+                {
+                    attack.SetActive(true);
+                    attack.transform.position = attackPosition;
+                }
+
+                attackDurationTimer += Time.deltaTime;
+
+                if (attackDurationTimer >= attackDuration)
+                {
+                    attack.SetActive(false);
+                    attackDurationTimer = 0;
+                    state = CombatState.finishAttack;
+                }
+
                 break;
 
             case CombatState.finishAttack:
-                attack.SetActive(false);
                 animate.EndAttackPlayer(enemyPosition);
                 break;
 
             case CombatState.cooldown:
                 cooldownTimer += Time.deltaTime;
-                //Debug.Log($"Cooldown: {cooldownTimer}");
 
                 if (cooldownTimer >= cooldown)
                 {
@@ -114,6 +123,7 @@ public class EnemyCombatController : MonoBehaviour
     public void Stop()
     {
         state = CombatState.idle;
+        animate.StopCombatAnimation();
     }
 
 

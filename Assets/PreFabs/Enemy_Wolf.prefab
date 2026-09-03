@@ -422,7 +422,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   attackDamage: 10
-  cooldown: 5
+  attackDuration: 0.1
+  cooldown: 1
   prepare: 0.5
   attack: {fileID: 6439357787309777253}
   animate: {fileID: 3442198519209673270}
@@ -499,12 +500,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   movingTolerance: 0.02
-  attackMoveSpeed: 5
+  attackMoveSpeed: 3
   attackStopDistance: 1
   animator: {fileID: 3048237288330517008}
   body: {fileID: 274184952060545257}
   spriteRenderer: {fileID: 2400689852873187051}
-  enemySprite: {fileID: 6902460953274636723}
   attackBegan:
     m_PersistentCalls:
       m_Calls:
@@ -609,9 +609,10 @@ GameObject:
   - component: {fileID: 1135060443644091203}
   - component: {fileID: 2189730358259729160}
   - component: {fileID: 3919658760529208236}
+  - component: {fileID: 6971606182832941179}
   m_Layer: 0
   m_Name: Attack
-  m_TagString: Untagged
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -639,7 +640,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6439357787309777253}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -720,12 +721,25 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.0000019073486, y: -0.0000038146973}
   m_Radius: 0.5
+--- !u!114 &6971606182832941179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6439357787309777253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea3c03eabb3173846b456dc1513e57b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  dmg: 3
 --- !u!1 &6902460953274636723
 GameObject:
   m_ObjectHideFlags: 0
