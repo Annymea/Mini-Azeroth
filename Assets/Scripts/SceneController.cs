@@ -1,5 +1,3 @@
-using Unity.VectorGraphics;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

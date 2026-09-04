@@ -148,7 +148,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "Press",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -159,8 +159,36 @@
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "e66d01ce-9f30-477e-a283-1fbe2cba8862",
+            "actions": [
+                {
+                    "name": "ScrollActions",
+                    "type": "Value",
+                    "id": "d23ad89c-2ce7-471e-9c11-4ea2f60e937e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e101aaf2-5521-4cbd-a0fd-06e166fcc1d6",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "ScrollActions",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

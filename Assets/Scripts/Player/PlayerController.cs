@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Camera cam;
+    [SerializeField] private GameObject playerUi;
     [SerializeField] private Animator animator;
 
     [Header("Values")]
@@ -40,7 +41,8 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.flipX = movement.x < 0;
         animator.SetBool("IsRunning",(movement.x != 0 || movement.y != 0));
         rigidBody.linearVelocity = movement * movementSpeed;
-        cam.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -100);
+        //cam.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -100);
+        playerUi.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -100);
     }
 
     
