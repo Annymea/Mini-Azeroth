@@ -105,6 +105,7 @@ public class PlayerCombatController : MonoBehaviour
                     {
                         state = AttackState.attack;
                         spells.StartGlobalCooldown();
+                        spells.StartCooldownOf(currentSpell);
                         castTimer = 0;
                     }
                 }

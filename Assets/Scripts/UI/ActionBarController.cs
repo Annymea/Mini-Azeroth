@@ -42,32 +42,29 @@ public class ActionBarController : MonoBehaviour
         {
             ScrollDown();
         }
-
-        if (globalCooldownRunning)
-        {
-            cooldownTimer += Time.deltaTime;
-            float globalCooldownPercentage = cooldownTimer / globalCooldown;
-
-            for(int i = 0; i < actionBarItems.Length; i ++)
-            {
-                ActionBarItemController itemController = GetCurrentActionBarItemController(i);
-                if (itemController == null) return;
-
-                itemController.ShowCooldown(globalCooldownPercentage);
-            }
-
-            if(cooldownTimer >= globalCooldown)
-            {
-                cooldownTimer = 0;
-                globalCooldownRunning = false;
-            }
-        }
     }
 
     public void StartGlobalCooldown()
     {
-        Debug.Log("Hier");
-        globalCooldownRunning = true; 
+        for (int i = 0; i < actionBarItems.Length; i++)
+        {
+            ActionBarItemController itemController = GetCurrentActionBarItemController(i);
+            if (itemController == null) return;
+
+            itemController.StartGlobalCooldown(globalCooldown);
+        }
+    }
+
+    public void StartCooldownOf(GameObject spell)
+    {
+        for (int i = 0; i < actionBarItems.Length; i++)
+        {
+            ActionBarItemController itemController = GetCurrentActionBarItemController(i);
+            if (itemController == null) return;
+
+            if (itemController.ContainsSpell(spell))
+                itemController.StartSpellCooldown();
+        }
     }
 
     private void ScrollUp()

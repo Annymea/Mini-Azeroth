@@ -571,6 +571,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1531052630}
     m_Modifications:
+    - target: {fileID: 4417898302097260848, guid: 431d97fb08a705649b3591d7066ec60c, type: 3}
+      propertyPath: containSpell
+      value: 
+      objectReference: {fileID: 7248570690293632645, guid: e870f37517bac2041b5685417480d058, type: 3}
     - target: {fileID: 8868795649117667053, guid: 431d97fb08a705649b3591d7066ec60c, type: 3}
       propertyPath: m_Name
       value: ActionBarItem5
@@ -3396,7 +3400,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 309679729
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.40487716, g: 0.9622642, b: 0.88722545, a: 1}
@@ -3603,7 +3607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
   cam: {fileID: 519420031}
-  castLauncher: {fileID: 2072625227}
+  castLauncher: {fileID: 2072625228}
   cast: {fileID: 337360068}
   spells: {fileID: 1531052631}
 --- !u!114 &1217370964
@@ -4339,7 +4343,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -100
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -103441,6 +103445,7 @@ MonoBehaviour:
   - {fileID: 1966908510}
   - {fileID: 458023876}
   - {fileID: 1595720795}
+  globalCooldown: 0.5
 --- !u!1001 &1531464283
 PrefabInstance:
   m_ObjectHideFlags: 0
