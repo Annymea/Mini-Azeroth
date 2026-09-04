@@ -81,6 +81,7 @@ public class PlayerCombatController : MonoBehaviour
                 if (IsPressed())
                 {
                     GetCurrentSpell();
+                    spells.StartGlobalCooldown();
                     state = AttackState.cast;
                 }
                 break;
