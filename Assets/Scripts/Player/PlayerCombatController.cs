@@ -80,21 +80,31 @@ public class PlayerCombatController : MonoBehaviour
             case AttackState.idle:
                 if (IsPressed())
                 {
-                    GetCurrentSpell();
-                    spells.StartGlobalCooldown();
                     state = AttackState.cast;
+                    GetCurrentSpell();
+                    if (currentSpell == null)
+                    {
+                        InterruptSpell();
+                    }
                 }
                 break;
             case AttackState.cast:
+                if(spells.GetCurrentSpell() != currentSpell)
+                {
+                    InterruptSpell();
+                }
+
                 if (!IsPressed())
                 {
                     state = AttackState.idle;
                 }
+
                 if (IsPressed())
                 {
                     if (castTimer >= currentSpellCastDuration)
                     {
                         state = AttackState.attack;
+                        spells.StartGlobalCooldown();
                         castTimer = 0;
                     }
                 }
@@ -102,16 +112,27 @@ public class PlayerCombatController : MonoBehaviour
             case AttackState.release:
                 if (!IsPressed())
                 {
-                    state = AttackState.idle;
+                    state = AttackState.idle; 
                 }
                 break;
         }
     }
 
+    private void InterruptSpell()
+    {
+        state = AttackState.release;
+        cast.HideCastBar();
+        castTimer = 0;
+    }
+
     private void GetCurrentSpell()
     {
         currentSpell = spells.GetCurrentSpell();
-        if (currentSpell == null) return;
+        if (currentSpell == null) 
+        {
+            return;
+        }
+            
 
         RangedSpellController spellControler = currentSpell.GetComponent<RangedSpellController>();
         

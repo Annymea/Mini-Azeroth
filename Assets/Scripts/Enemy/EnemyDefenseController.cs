@@ -20,7 +20,6 @@ public class EnemyDefenseController : MonoBehaviour
 
         float damage = Mathf.Max(attack.AttackDamage() - defense, 0);
 
-        Debug.Log(attack.AttackDamage());
         getDamage.Invoke(damage);
 
         Transform playerPos = attack.GetPlayerPos();
