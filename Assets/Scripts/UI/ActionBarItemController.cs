@@ -9,4 +9,9 @@ public class ActionBarItemController : MonoBehaviour
     {
         selection.SetActive(selected);
     }
+
+    public GameObject GetContainedSpell()
+    {
+        return containSpell;
+    }
 }

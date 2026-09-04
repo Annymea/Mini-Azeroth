@@ -69,9 +69,25 @@ public class ActionBarController : MonoBehaviour
 
     private void SetActive(bool active)
     {
-        ActionBarItemController itemController = actionBarItems[activeElement].GetComponent<ActionBarItemController>();
+        ActionBarItemController itemController = GetCurrentActionBarItemController();
         if (itemController == null) return;
 
         itemController.Select(active);
+    }
+
+    public GameObject GetCurrentSpell()
+    {
+        ActionBarItemController itemController = GetCurrentActionBarItemController();
+        if (itemController == null) return null;
+
+        return itemController.GetContainedSpell();
+    }
+
+    private ActionBarItemController GetCurrentActionBarItemController()
+    {
+        ActionBarItemController itemController = actionBarItems[activeElement].GetComponent<ActionBarItemController>();
+        if (itemController == null) return null;
+
+        return itemController;
     }
 }

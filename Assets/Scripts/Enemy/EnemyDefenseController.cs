@@ -15,15 +15,15 @@ public class EnemyDefenseController : MonoBehaviour
     {
         if (collision.tag != "Projectile") return;
 
-        AttackController attack = collision.GetComponent<AttackController>();
-        if (attack == null) return;
-        ProjectileController projectile = attack.GetComponent<ProjectileController>();
-        if(projectile == null) return;
+        IPlayerAttack attack = collision.GetComponent<IPlayerAttack>();
+        if(attack == null) return;
 
-        float damage = Mathf.Max(attack.DoDamage() - defense, 0);
+        float damage = Mathf.Max(attack.AttackDamage() - defense, 0);
+
+        Debug.Log(attack.AttackDamage());
         getDamage.Invoke(damage);
 
-        Transform playerPos = projectile.GetPlayerPos();
+        Transform playerPos = attack.GetPlayerPos();
         getDamageFrom.Invoke(playerPos);
     }
 }
