@@ -369,7 +369,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.24962819, y: 0.269637}
+    - - {x: 0.97632223, y: 0.60070205}
+      - {x: 0.73904324, y: 0.9261632}
+      - {x: 0.568375, y: 0.6039535}
+      - {x: -0.22368407, y: 0.6198801}
+      - {x: -0.5523342, y: 0.5856859}
+      - {x: -1.0012237, y: 0.040004134}
       - {x: -0.50855374, y: 0.08164592}
       - {x: -0.5200514, y: -0.011960357}
       - {x: -0.43965745, y: -0.06433967}
@@ -380,7 +385,7 @@ PolygonCollider2D:
       - {x: 0.71429396, y: -0.11760026}
       - {x: 0.70424867, y: 0.090890914}
       - {x: 0.6224444, y: 0.17544045}
-      - {x: 0.45896763, y: 0.2956706}
+      - {x: 0.6016591, y: 0.4578205}
   m_UseDelaunayMesh: 1
 --- !u!50 &274184952060545257
 Rigidbody2D:
@@ -1066,22 +1071,6 @@ PrefabInstance:
       value: HealthbarContainer
       objectReference: {fileID: 0}
     - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: maxHealth
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
       propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4948401049841148167}
@@ -1089,38 +1078,6 @@ PrefabInstance:
       propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 9120364907363902374}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnDeath
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnDeath
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: EnemyStatusController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5316958875010375843, guid: d280c1c858a376841ad4de21602213aa, type: 3}
-      propertyPath: isDeadNow.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 5935810301766316748, guid: d280c1c858a376841ad4de21602213aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

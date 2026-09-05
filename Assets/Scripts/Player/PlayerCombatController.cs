@@ -66,8 +66,10 @@ public class PlayerCombatController : MonoBehaviour
                 Vector2 worldPos = actions.Combat.Aim.ReadValue<Vector2>();
                 mousePos = cam.ScreenToWorldPoint(new Vector3(worldPos.x, worldPos.y));
 
-                cast.HideCastBar();
                 Shoot();
+                spells.StartGlobalCooldown();
+                spells.StartCooldownOf(currentSpell);
+
                 state = AttackState.release;
                 break;
         }
@@ -80,12 +82,21 @@ public class PlayerCombatController : MonoBehaviour
             case AttackState.idle:
                 if (IsPressed())
                 {
-                    state = AttackState.cast;
                     GetCurrentSpell();
+
                     if (currentSpell == null)
                     {
                         InterruptSpell();
+                        return;
                     }
+
+                    if(currentSpellCastDuration == 0)
+                    {
+                        state = AttackState.attack;
+                        return;
+                    }
+
+                    state = AttackState.cast;
                 }
                 break;
             case AttackState.cast:
@@ -104,8 +115,7 @@ public class PlayerCombatController : MonoBehaviour
                     if (castTimer >= currentSpellCastDuration)
                     {
                         state = AttackState.attack;
-                        spells.StartGlobalCooldown();
-                        spells.StartCooldownOf(currentSpell);
+                        cast.HideCastBar();
                         castTimer = 0;
                     }
                 }

@@ -8,9 +8,6 @@ public class ActionBarController : MonoBehaviour
     [Header("Stats")]
     [SerializeField] private float globalCooldown = 0.5f;
 
-    private float cooldownTimer = 0;
-    private bool globalCooldownRunning = false; 
-
 
     private InputSystem_Actions actions;
     private int activeElement = 0;

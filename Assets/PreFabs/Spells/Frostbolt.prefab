@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   castDuration: 1
-  cooldownDuration: 2
+  cooldownDuration: 1
   attackDamage: 10
   range: 30
   destroyOnHit: 1
