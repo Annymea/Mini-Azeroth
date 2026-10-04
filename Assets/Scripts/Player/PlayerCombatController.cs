@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
+
+
     private enum AttackState
     {
         idle, cast, attack, release

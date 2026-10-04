@@ -6,6 +6,7 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         transform.position = player.transform.position;
     }
 
