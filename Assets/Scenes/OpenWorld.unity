@@ -60368,11 +60368,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5661965701565593719, guid: 03cd70a3aab87da4b9067813726e814f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.2632
+      value: 52.23
       objectReference: {fileID: 0}
     - target: {fileID: 5661965701565593719, guid: 03cd70a3aab87da4b9067813726e814f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0908029
+      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 5661965701565593719, guid: 03cd70a3aab87da4b9067813726e814f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -64063,7 +64063,7 @@ Transform:
   m_GameObject: {fileID: 912036091}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.86, y: 0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -208043,7 +208043,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  damageSound: {fileID: 8300000, guid: ce0a7aeddafaeea4188633b88afaf620, type: 3}
+  damageSounds:
+  - {fileID: 8300000, guid: ce0a7aeddafaeea4188633b88afaf620, type: 3}
+  - {fileID: 8300000, guid: 51ec050d15dde4a43ab0d54fe850a139, type: 3}
+  - {fileID: 8300000, guid: 7ef992d5538823e47a905e6891fa5bae, type: 3}
+  - {fileID: 8300000, guid: de5da7ba4a49e754da1f12b38c657046, type: 3}
 --- !u!114 &1217370965
 MonoBehaviour:
   m_ObjectHideFlags: 0
